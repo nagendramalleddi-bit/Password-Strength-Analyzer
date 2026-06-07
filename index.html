@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Password Strength Analyzer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background glow orbs -->
+  <div class="glow-orb a"></div>
+  <div class="glow-orb b"></div>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">🔐</div>
+      PassGuard
+    </div>
+    <span class="badge">Security Tool</span>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <p class="hero-tag">Password Security Analyzer</p>
+    <h1>How strong is<br /><span>your password?</span></h1>
+    <p>Analyze strength, entropy, and crack time. Get smarter alternatives and track reuse history.</p>
+  </section>
+
+  <!-- ── MAIN CARD ── -->
+  <div class="main-card">
+    <div class="card">
+
+      <!-- Password Input -->
+      <div class="input-group">
+        <label class="input-label" for="pwInput">Enter your password</label>
+        <div class="input-wrap">
+          <input type="password" id="pwInput" placeholder="Type to analyze…" autocomplete="off" />
+          <button class="eye-btn" id="eyeBtn" title="Toggle visibility">👁️</button>
+        </div>
+      </div>
+
+      <!-- Strength Meter -->
+      <div class="meter-section">
+        <div class="meter-header">
+          <span class="meter-label">Strength</span>
+          <span class="meter-score" id="meterScore">—</span>
+        </div>
+        <div class="meter-track">
+          <div class="meter-fill" id="meterFill"></div>
+        </div>
+        <div class="tier-dots">
+          <div class="tier-dot" id="td0"></div>
+          <div class="tier-dot" id="td1"></div>
+          <div class="tier-dot" id="td2"></div>
+          <div class="tier-dot" id="td3"></div>
+        </div>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-val" id="statLen">0</div>
+          <div class="stat-key">Length</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="statPool">0</div>
+          <div class="stat-key">Pool Size</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="statBits">0</div>
+          <div class="stat-key">Entropy (bits)</div>
+        </div>
+      </div>
+
+      <!-- Crack Time Banner -->
+      <div class="crack-row hidden" id="crackRow">
+        <span id="crackIcon">⚡</span>
+        <span id="crackText">Estimated crack time: —</span>
+      </div>
+
+      <!-- Security Checks -->
+      <p class="checks-title">Security checks</p>
+      <div class="checks-grid" id="checksGrid"></div>
+
+      <!-- Suggestions -->
+      <p class="sug-title">Stronger alternatives</p>
+      <div id="sugList"></div>
+
+    </div>
+  </div>
+
+  <!-- ── REUSE / HISTORY ── -->
+  <div class="history-card">
+    <div class="history-header">
+      <h3>🗂️ Reuse detection — analyzed passwords</h3>
+      <button class="clear-btn" onclick="clearHistory()">Clear all</button>
+    </div>
+    <div id="historyList">
+      <p class="history-empty">Press Enter after typing to log a password hash</p>
+    </div>
+  </div>
+
+  <!-- ── CONCEPTS ── -->
+  <div class="concepts-section">
+    <p class="section-head">What you learn with this tool</p>
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <div class="concept-icon">🔢</div>
+        <p class="concept-title">Entropy &amp; Pool Size</p>
+        <p class="concept-desc">Entropy (bits) = length × log₂(pool). Larger pools and longer passwords exponentially increase crack resistance.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">🧂</div>
+        <p class="concept-title">Hashing &amp; Salting</p>
+        <p class="concept-desc">This tool stores a one-way hash of your password — never the raw text. Real systems use bcrypt/Argon2 with salts.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">⚡</div>
+        <p class="concept-title">Brute-force Attacks</p>
+        <p class="concept-desc">Modern GPUs can test 10B+ guesses/sec. Crack time estimates show why 8-char passwords aren't enough.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">🔄</div>
+        <p class="concept-title">Password Reuse</p>
+        <p class="concept-desc">Reusing passwords across sites is the #1 risk. Hash-based logging detects reuse without exposing your actual password.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>Built with HTML, CSS &amp; Vanilla JS · Password Strength Analyzer Project · 2026</footer>
+  <footer>Done by Malleddi Nagendra</footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
